@@ -9,7 +9,6 @@ const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
   const [todos, setTodos] = useState<Todo[]>([]);
   const [doneTodos, setDoneTodos] = useState<Todo[]>([]);
-  console.log(todo);
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,9 +30,9 @@ const App: React.FC = () => {
     )
       return;
 
-    let add: Todo,
-      active = todos,
-      complete = doneTodos;
+    let add: Todo;
+    const active = [...todos];
+    const complete = [...doneTodos];
 
     if (source.droppableId === "TodosList") {
       add = active[source.index];
